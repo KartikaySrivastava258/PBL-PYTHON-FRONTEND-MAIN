@@ -1,86 +1,156 @@
 ````markdown
 # Campus Connect Frontend
 
-A React-based frontend application for **Campus Connect**, a web platform designed to streamline communication between students, teachers, and administrators. The application provides secure authentication, role-based access, and a modern user interface while integrating with a FastAPI backend.
+**A Modern React-Based Frontend for a Campus Communication and Collaboration Platform**
+
+Campus Connect Frontend is a single-page web application built using **React** and **Vite** that provides an intuitive interface for students, teachers, and administrators to interact with the Campus Connect platform.
+
+The application integrates with a FastAPI backend through REST APIs and implements secure authentication, protected routing, role-based dashboards, and a modern chat interface. The project follows a modular component-based architecture to ensure scalability, maintainability, and ease of development.
 
 ---
 
 ## Table of Contents
 
-- [Overview](#overview)
-- [Features](#features)
-- [Technology Stack](#technology-stack)
-- [Project Structure](#project-structure)
-- [Getting Started](#getting-started)
-- [Available Scripts](#available-scripts)
-- [Application Flow](#application-flow)
-- [Authentication](#authentication)
-- [Project Architecture](#project-architecture)
-- [Future Improvements](#future-improvements)
-- [Contributing](#contributing)
-- [License](#license)
-
----
-
-## Overview
-
-Campus Connect Frontend is built using **React** and **Vite** to provide a fast and responsive user interface for the Campus Connect platform.
-
-The frontend communicates with a FastAPI backend through REST APIs and supports authenticated access for multiple user roles.
-
-Current modules include:
-
+- Overview
+- Features
+- Application Architecture
+- Technology Stack
+- Project Structure
+- Getting Started
+- Available Scripts
 - Authentication
-- Role-based navigation
-- Student interface
-- Teacher interface
-- Administrator dashboard
-- Chat interface
-- Protected routing
-- Error handling
+- Application Workflow
+- Development Principles
+- Future Improvements
+- Screenshots
+- Contributors
+- License
 
 ---
 
-## Features
+# Overview
 
-- Secure login system
-- JWT-based authentication
-- Protected routes
-- Role-based dashboard access
-- Student interface
-- Teacher interface
-- Administrator dashboard
-- Chat module
-- Form validation
-- Responsive user interface
-- Client-side routing
-- Modern component-based architecture
+Campus Connect is a web-based communication platform designed for educational institutions to simplify interaction between students, faculty members, and administrators.
+
+This repository contains the frontend application responsible for rendering the user interface, handling authentication, managing navigation, and communicating with the backend services.
+
+The project focuses on providing a responsive, maintainable, and user-friendly experience while following modern frontend development practices.
 
 ---
 
-## Technology Stack
+# Features
+
+## Authentication
+
+- Secure Login
+- JWT Token Authentication
+- Session Persistence
+- Protected Routes
+- Authentication Utilities
+
+---
+
+## User Interface
+
+- Responsive Layout
+- Modern React Components
+- Client-Side Routing
+- Form Validation
+- Toast Notifications
+- Error Handling
+
+---
+
+## Role-Based Access
+
+Supports dedicated interfaces for:
+
+- Students
+- Teachers
+- Administrators
+
+Each user role is provided with an isolated experience through protected routing.
+
+---
+
+## Chat Module
+
+Includes a dedicated chat interface supporting:
+
+- Conversation View
+- User Interaction
+- Message Components
+- Extensible Architecture for Real-Time Messaging
+
+---
+
+## Routing
+
+The application implements structured routing using React Router, including:
+
+- Login Page
+- Teacher Dashboard
+- Admin Dashboard
+- Chat Page
+- Protected Routes
+- 404 Not Found Page
+
+---
+
+# Application Architecture
+
+```text
+                    +--------------------------+
+                    |      React Frontend      |
+                    +------------+-------------+
+                                 |
+                           React Router
+                                 |
+         --------------------------------------------------
+         |                |               |               |
+         |                |               |               |
+     Login Page      Chat Module   Teacher Portal   Admin Dashboard
+                                 |
+                                 |
+                        Authentication Layer
+                                 |
+                         Protected Routes
+                                 |
+                           REST API Calls
+                                 |
+                    +------------v-------------+
+                    |      FastAPI Backend     |
+                    +------------+-------------+
+                                 |
+                           PostgreSQL Database
+```
+
+---
+
+# Technology Stack
 
 | Category | Technology |
 |----------|------------|
-| Framework | React 19 |
+| Frontend Framework | React 19 |
 | Build Tool | Vite |
 | Language | JavaScript (ES6+) |
 | Routing | React Router DOM |
-| Form Handling | React Hook Form |
+| Forms | React Hook Form |
 | Validation | Zod |
 | Icons | Lucide React, React Icons |
 | Notifications | Sonner |
 | Emoji Support | Emoji Picker React |
 | Backend | FastAPI |
 | Database | PostgreSQL |
+| Version Control | Git & GitHub |
 
 ---
 
-## Project Structure
+# Project Structure
 
 ```text
-pbl-python-frontend-main
-│
+pbl-python-frontend-main/
+
 ├── public/
 │   └── vite.svg
 │
@@ -103,6 +173,8 @@ pbl-python-frontend-main
 │   ├── App.jsx
 │   ├── AppRouter.jsx
 │   ├── main.jsx
+│   ├── App.css
+│   ├── index.css
 │   └── theme.css
 │
 ├── package.json
@@ -112,27 +184,27 @@ pbl-python-frontend-main
 
 ---
 
-## Getting Started
+# Getting Started
 
-### Clone the repository
-
-```bash
-git clone https://github.com/<username>/pbl-python-frontend.git
-```
-
-### Navigate into the project
+## Clone Repository
 
 ```bash
+git clone https://github.com/YOUR_USERNAME/pbl-python-frontend.git
+
 cd pbl-python-frontend
 ```
 
-### Install dependencies
+---
+
+## Install Dependencies
 
 ```bash
 npm install
 ```
 
-### Start the development server
+---
+
+## Start Development Server
 
 ```bash
 npm run dev
@@ -146,71 +218,44 @@ http://localhost:5173
 
 ---
 
-## Available Scripts
-
-### Start Development Server
-
-```bash
-npm run dev
-```
-
-### Build for Production
+## Build for Production
 
 ```bash
 npm run build
 ```
 
-### Preview Production Build
+---
+
+## Preview Production Build
 
 ```bash
 npm run preview
 ```
 
-### Run ESLint
+---
 
-```bash
-npm run lint
-```
+# Available Scripts
+
+| Command | Description |
+|----------|-------------|
+| `npm run dev` | Starts the development server |
+| `npm run build` | Creates a production build |
+| `npm run preview` | Serves the production build locally |
+| `npm run lint` | Runs ESLint |
 
 ---
 
-## Application Flow
+# Authentication
 
-```text
-User
-   │
-   ▼
-Login Page
-   │
-   ▼
-Authentication
-   │
-   ▼
-Protected Route
-   │
-   ▼
-Role Verification
-   │
-   ├─────────────► Student
-   │
-   ├─────────────► Teacher
-   │
-   └─────────────► Administrator
-```
+Authentication is implemented using JWT-based access tokens provided by the backend.
 
----
+The frontend handles:
 
-## Authentication
-
-The frontend uses token-based authentication.
-
-Features include:
-
-- Login validation
-- Protected routes
+- Login requests
+- Token storage
+- Protected route validation
 - Session persistence
-- Unauthorized access prevention
-- Role-based page rendering
+- Unauthorized redirects
 
 Authentication utilities are located in:
 
@@ -220,104 +265,122 @@ src/utils/auth.js
 
 ---
 
-## Project Architecture
+# Application Workflow
 
 ```text
-                React Frontend
-                       │
-                       │
-                HTTP Requests
-                       │
-                       ▼
-                FastAPI Backend
-                       │
-                       ▼
-                PostgreSQL Database
+User Visits Application
+          │
+          ▼
+      Login Page
+          │
+          ▼
+ Authentication Request
+          │
+          ▼
+ Receive JWT Token
+          │
+          ▼
+ Store Session
+          │
+          ▼
+ Protected Route Validation
+          │
+          ▼
+ Role Verification
+          │
+ ┌────────┼─────────┐
+ │        │         │
+ ▼        ▼         ▼
+Student Teacher  Administrator
+          │
+          ▼
+ Dashboard / Chat Interface
 ```
 
 ---
 
-## Development Principles
+# Development Principles
 
-This project follows common frontend engineering practices:
+The project follows several frontend engineering practices, including:
 
-- Component-based architecture
-- Reusable UI components
-- Separation of concerns
-- Client-side routing
-- Form validation
-- Maintainable project structure
-- Responsive layouts
-- Scalable code organization
+- Component-Based Architecture
+- Separation of Concerns
+- Reusable Components
+- Protected Routing
+- Responsive User Interface
+- Client-Side State Management
+- Modular Folder Structure
+- Maintainable Code Organization
 
 ---
 
-## Future Improvements
+# Future Improvements
 
 Potential enhancements include:
 
-- Real-time messaging using WebSockets
-- File sharing
-- Push notifications
-- Video and voice communication
-- Dark mode
-- User profile management
-- Search functionality
-- Mobile optimization
-- Message history
-- Typing indicators
-- Read receipts
+- WebSocket-Based Real-Time Messaging
+- Typing Indicators
+- Read Receipts
+- File Sharing
+- User Profile Management
+- Push Notifications
+- Dark Mode
+- Search Functionality
+- Group Chat Management
+- Voice and Video Calling
+- Message Reactions
+- Mobile Responsive Improvements
 
 ---
 
-## Contributing
+# Screenshots
 
-Contributions are welcome.
+Project screenshots can be organized as:
 
-1. Fork the repository.
-2. Create a feature branch.
+```text
+docs/
 
-```bash
-git checkout -b feature/your-feature
+├── login-page.png
+├── dashboard.png
+├── teacher-panel.png
+├── admin-dashboard.png
+└── chat-interface.png
 ```
-
-3. Commit your changes.
-
-```bash
-git commit -m "Add new feature"
-```
-
-4. Push your branch.
-
-```bash
-git push origin feature/your-feature
-```
-
-5. Open a Pull Request.
 
 ---
 
-## License
+# Contributors
 
-This project was developed as part of a Project-Based Learning (PBL) course for academic purposes.
+### Maddy Daniel
 
----
+**Bachelor of Technology**  
+**Computer Science Engineering**
 
-## Author
-
-**Maddy Daniel**
-
-Bachelor of Technology  
-Computer Science Engineering
-
-Areas of Interest
+**Areas of Interest**
 
 - Full Stack Development
-- Distributed Systems
 - Backend Engineering
-- Modern Web Applications
+- Software Architecture
+- Distributed Systems
+- Modern Web Technologies
 
 ---
 
-If you find this repository useful, consider starring it on GitHub.
+# Project Objective
+
+Campus Connect Frontend was developed as part of a Project-Based Learning initiative to demonstrate practical knowledge of modern frontend development, authentication systems, component-based architecture, and seamless integration with backend services.
+
+The project emphasizes clean code practices, modular design, and scalable application development while providing a user-friendly interface for campus communication.
+
+---
+
+# License
+
+This project was developed for academic and educational purposes as part of a Project-Based Learning (PBL) program.
+
+---
+
+## Support
+
+If you found this project useful, consider giving the repository a **Star** on GitHub. Your support helps improve the project and encourages continued development.
 ````
