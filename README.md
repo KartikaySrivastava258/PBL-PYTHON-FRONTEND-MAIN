@@ -1,31 +1,60 @@
 ````markdown
 # Campus Connect Frontend
 
-A modern React-based frontend application for the Campus Connect platform, developed as part of a Project-Based Learning (PBL) initiative. The application provides an intuitive interface for students, faculty members, and administrators to communicate, collaborate, and access campus services through a unified platform.
+A React-based frontend application for **Campus Connect**, a web platform designed to streamline communication between students, teachers, and administrators. The application provides secure authentication, role-based access, and a modern user interface while integrating with a FastAPI backend.
+
+---
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Features](#features)
+- [Technology Stack](#technology-stack)
+- [Project Structure](#project-structure)
+- [Getting Started](#getting-started)
+- [Available Scripts](#available-scripts)
+- [Application Flow](#application-flow)
+- [Authentication](#authentication)
+- [Project Architecture](#project-architecture)
+- [Future Improvements](#future-improvements)
+- [Contributing](#contributing)
+- [License](#license)
 
 ---
 
 ## Overview
 
-Campus Connect is designed to simplify communication within an educational institution by providing a centralized platform for messaging, announcements, and user management. This repository contains the frontend application, which communicates with a FastAPI backend through REST APIs.
+Campus Connect Frontend is built using **React** and **Vite** to provide a fast and responsive user interface for the Campus Connect platform.
 
-The application emphasizes responsive design, modular architecture, maintainability, and a smooth user experience.
+The frontend communicates with a FastAPI backend through REST APIs and supports authenticated access for multiple user roles.
+
+Current modules include:
+
+- Authentication
+- Role-based navigation
+- Student interface
+- Teacher interface
+- Administrator dashboard
+- Chat interface
+- Protected routing
+- Error handling
 
 ---
 
 ## Features
 
-- User authentication
-- Secure login interface
-- User profile management
-- One-to-one messaging
-- Group conversations
-- Announcements dashboard
-- User search functionality
-- Responsive interface
-- REST API integration
-- Error handling and validation
-- Modular component architecture
+- Secure login system
+- JWT-based authentication
+- Protected routes
+- Role-based dashboard access
+- Student interface
+- Teacher interface
+- Administrator dashboard
+- Chat module
+- Form validation
+- Responsive user interface
+- Client-side routing
+- Modern component-based architecture
 
 ---
 
@@ -33,32 +62,48 @@ The application emphasizes responsive design, modular architecture, maintainabil
 
 | Category | Technology |
 |----------|------------|
-| Frontend Framework | React |
+| Framework | React 19 |
 | Build Tool | Vite |
-| Language | JavaScript |
-| Styling | CSS3 |
-| API Communication | Fetch API |
+| Language | JavaScript (ES6+) |
+| Routing | React Router DOM |
+| Form Handling | React Hook Form |
+| Validation | Zod |
+| Icons | Lucide React, React Icons |
+| Notifications | Sonner |
+| Emoji Support | Emoji Picker React |
 | Backend | FastAPI |
 | Database | PostgreSQL |
-| Version Control | Git |
 
 ---
 
 ## Project Structure
 
 ```text
-pbl-python-frontend/
+pbl-python-frontend-main
 │
 ├── public/
+│   └── vite.svg
 │
 ├── src/
 │   ├── assets/
+│   │
 │   ├── components/
+│   │   └── ProtectedRoute.jsx
+│   │
 │   ├── pages/
-│   ├── styles/
+│   │   ├── LoginPage.jsx
+│   │   ├── ChatPage.jsx
+│   │   ├── TeacherPage.jsx
+│   │   ├── AdminDashboard.jsx
+│   │   └── NotFound.jsx
+│   │
 │   ├── utils/
+│   │   └── auth.js
+│   │
 │   ├── App.jsx
-│   └── main.jsx
+│   ├── AppRouter.jsx
+│   ├── main.jsx
+│   └── theme.css
 │
 ├── package.json
 ├── vite.config.js
@@ -67,43 +112,27 @@ pbl-python-frontend/
 
 ---
 
-## Prerequisites
+## Getting Started
 
-Ensure the following software is installed before running the project.
-
-- Node.js (v18 or later recommended)
-- npm
-- Git
-
-The backend server should also be running before starting the frontend application.
-
----
-
-## Installation
-
-Clone the repository:
+### Clone the repository
 
 ```bash
-git clone https://github.com/<your-username>/pbl-python-frontend.git
+git clone https://github.com/<username>/pbl-python-frontend.git
 ```
 
-Navigate to the project directory:
+### Navigate into the project
 
 ```bash
 cd pbl-python-frontend
 ```
 
-Install project dependencies:
+### Install dependencies
 
 ```bash
 npm install
 ```
 
----
-
-## Running the Application
-
-Start the development server:
+### Start the development server
 
 ```bash
 npm run dev
@@ -117,83 +146,127 @@ http://localhost:5173
 
 ---
 
-## Build for Production
+## Available Scripts
 
-Generate a production build:
+### Start Development Server
+
+```bash
+npm run dev
+```
+
+### Build for Production
 
 ```bash
 npm run build
 ```
 
-Preview the production build locally:
+### Preview Production Build
 
 ```bash
 npm run preview
 ```
 
----
+### Run ESLint
 
-## Backend Integration
-
-The frontend communicates with a FastAPI backend using REST APIs.
-
-Typical workflow:
-
-```text
-React Frontend
-       │
-       │ HTTP Requests
-       ▼
-FastAPI Backend
-       │
-       ▼
-PostgreSQL Database
+```bash
+npm run lint
 ```
 
-Ensure the backend server is configured correctly and accessible before using the application.
+---
+
+## Application Flow
+
+```text
+User
+   │
+   ▼
+Login Page
+   │
+   ▼
+Authentication
+   │
+   ▼
+Protected Route
+   │
+   ▼
+Role Verification
+   │
+   ├─────────────► Student
+   │
+   ├─────────────► Teacher
+   │
+   └─────────────► Administrator
+```
 
 ---
 
-## Design Principles
+## Authentication
 
-The project follows several software engineering practices, including:
+The frontend uses token-based authentication.
+
+Features include:
+
+- Login validation
+- Protected routes
+- Session persistence
+- Unauthorized access prevention
+- Role-based page rendering
+
+Authentication utilities are located in:
+
+```text
+src/utils/auth.js
+```
+
+---
+
+## Project Architecture
+
+```text
+                React Frontend
+                       │
+                       │
+                HTTP Requests
+                       │
+                       ▼
+                FastAPI Backend
+                       │
+                       ▼
+                PostgreSQL Database
+```
+
+---
+
+## Development Principles
+
+This project follows common frontend engineering practices:
 
 - Component-based architecture
-- Separation of concerns
 - Reusable UI components
+- Separation of concerns
+- Client-side routing
+- Form validation
+- Maintainable project structure
 - Responsive layouts
-- Maintainable code structure
-- API abstraction
-- Consistent folder organization
+- Scalable code organization
 
 ---
 
-## Security Considerations
+## Future Improvements
 
-The application is designed to support:
+Potential enhancements include:
 
-- JWT-based authentication
-- Protected application routes
-- Secure API communication
-- Client-side input validation
-- Error handling
-- Session management
-
----
-
-## Future Enhancements
-
-Potential improvements include:
-
-- Real-time notifications
-- Voice and video communication
+- Real-time messaging using WebSockets
 - File sharing
-- Calendar integration
-- Event management
-- Mobile application support
+- Push notifications
+- Video and voice communication
 - Dark mode
-- Advanced search functionality
-- AI-assisted features
+- User profile management
+- Search functionality
+- Mobile optimization
+- Message history
+- Typing indicators
+- Read receipts
 
 ---
 
@@ -202,49 +275,49 @@ Potential improvements include:
 Contributions are welcome.
 
 1. Fork the repository.
-2. Create a new feature branch.
+2. Create a feature branch.
 
 ```bash
-git checkout -b feature/feature-name
+git checkout -b feature/your-feature
 ```
 
 3. Commit your changes.
 
 ```bash
-git commit -m "Add feature"
+git commit -m "Add new feature"
 ```
 
-4. Push the branch.
+4. Push your branch.
 
 ```bash
-git push origin feature/feature-name
+git push origin feature/your-feature
 ```
 
 5. Open a Pull Request.
 
 ---
 
-## Developer
+## License
 
-**Maddy Daniel**
-
-Bachelor of Technology in Computer Science Engineering
-
-Areas of Interest:
-
-- Full Stack Development
-- Distributed Systems
-- Web Technologies
-- Software Engineering
-- Open Source Development
-
-GitHub: https://github.com/<your-username>
-
-LinkedIn: https://linkedin.com/in/<your-profile>
+This project was developed as part of a Project-Based Learning (PBL) course for academic purposes.
 
 ---
 
-## License
+## Author
 
-This project was developed as part of an academic Project-Based Learning (PBL) program. It is intended for educational purposes unless otherwise specified.
+**Maddy Daniel**
+
+Bachelor of Technology  
+Computer Science Engineering
+
+Areas of Interest
+
+- Full Stack Development
+- Distributed Systems
+- Backend Engineering
+- Modern Web Applications
+
+---
+
+If you find this repository useful, consider starring it on GitHub.
 ````
