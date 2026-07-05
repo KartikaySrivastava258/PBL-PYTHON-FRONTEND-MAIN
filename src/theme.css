@@ -1,0 +1,31 @@
+
+:root {
+  --background: hsl(224, 71%, 4%);
+  --foreground: hsl(213, 31%, 91%);
+  --card: hsl(224, 71%, 6%);
+  --primary: hsl(263, 70%, 50%);
+  --primary-glow: hsl(263, 70%, 65%);
+  --secondary: hsl(217, 33%, 17%);
+  --muted: hsl(223, 47%, 11%);
+  --muted-foreground: hsl(215, 20%, 65%);
+  --border: hsl(217, 33%, 17%);
+  --destructive: hsl(0, 63%, 31%);
+  --chat-bubble: hsl(217, 33%, 20%);
+  --chat-bubble-own: hsl(263, 70%, 50%);
+  --chat-input: hsl(223, 47%, 11%);
+  --gradient-primary: linear-gradient(135deg, hsl(263, 70%, 50%), hsl(263, 70%, 65%));
+  --gradient-bg: linear-gradient(180deg, hsl(224, 71%, 4%), hsl(224, 71%, 6%));
+  --shadow-glow: 0 0 40px hsl(263, 70%, 50% / 0.3);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --radius: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 2rem;
+  --font-family: 'Inter', 'Segoe UI', 'system-ui', sans-serif;
+  --font-size-base: 14px;
+  --font-size-sm: 12px;
+  --font-size-lg: 32px;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+}
